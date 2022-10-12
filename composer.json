@@ -1,0 +1,7 @@
+{
+    "require": {
+        "fabpot/goutte": "^4.0",
+        "guzzlehttp/guzzle": "^7.5",
+        "paragonie/random_compat": "^9.99"
+    }
+}
