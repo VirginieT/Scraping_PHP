@@ -4,14 +4,14 @@ header('Content-Type: text/csv');
     use Goutte\Client;
 
     $client = new Client();
-    $crawler = $client->request('GET', 'https://www.lemonde.fr');
+    $crawler = $client->request('GET', 'https://www.lemonde.fr/actualite');
     $r = [];
     $out = fopen('php://output', 'w');
 
-    $crawler->filter('div.article > a')->each(function ($node) {
+    $crawler->filter('section.teaser')->each(function ($node) {
         global $r, $out;
         $url = $node->attr('href');
-        $nom = trim($node->filter('.article__title')->text());        
+        $nom = trim($node->filter('.teaser')->text());        
         fputcsv($out, [$nom,$url]);
     });
     fclose($out);
